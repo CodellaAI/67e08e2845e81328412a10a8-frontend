@@ -1,9 +1,38 @@
 
 import Image from 'next/image'
-import { Construction, Bomb, Star, Sparkles, Zap } from 'lucide-react'
+import Link from 'next/link'
+import { Construction, Bomb, Star, Sparkles, Zap, Gamepad2 } from 'lucide-react'
 import RetroCounter from '../components/RetroCounter'
 
 export default function Home() {
+  // Sample games data for the homepage
+  const featuredGames = [
+    {
+      id: 1,
+      title: "Doom (1993)",
+      image: "/images/games/doom.jpg",
+      company: "id Software"
+    },
+    {
+      id: 2,
+      title: "Super Mario 64 (1996)",
+      image: "/images/games/mario64.jpg",
+      company: "Nintendo"
+    },
+    {
+      id: 3,
+      title: "Final Fantasy VII (1997)",
+      image: "/images/games/ff7.jpg",
+      company: "Square"
+    },
+    {
+      id: 4,
+      title: "The Legend of Zelda: Ocarina of Time (1998)",
+      image: "/images/games/zelda.jpg",
+      company: "Nintendo"
+    }
+  ];
+
   return (
     <main className="retro-container py-8">
       <div className="text-center mb-12">
@@ -117,7 +146,7 @@ export default function Home() {
         <Construction className="text-black" size={24} />
       </div>
       
-      <div className="bg-retro-darkgray p-6 border-4 border-dashed border-retro-red">
+      <div className="bg-retro-darkgray p-6 border-4 border-dashed border-retro-red mb-12">
         <h2 className="retro-subtitle text-center">Sign My Guestbook!</h2>
         <form className="space-y-4 max-w-md mx-auto">
           <div>
@@ -147,6 +176,41 @@ export default function Home() {
             </button>
           </div>
         </form>
+      </div>
+      
+      {/* Games Section Added */}
+      <div className="mb-12">
+        <div className="text-center mb-6">
+          <h2 className="retro-subtitle flex items-center justify-center">
+            <Gamepad2 className="text-retro-yellow mr-2" size={24} />
+            Totally Rad 90s Games
+            <Gamepad2 className="text-retro-yellow ml-2" size={24} />
+          </h2>
+          <p className="font-courier text-retro-green mb-4">Check out these classic games that defined the 90s era!</p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {featuredGames.map((game) => (
+            <Link href={`/games/${game.id}`} key={game.id}>
+              <div className="bg-retro-darkgray border-2 border-retro-teal hover:border-retro-pink p-3 cursor-pointer transition-colors">
+                <div className="bg-retro-black border border-retro-purple h-32 flex items-center justify-center mb-2">
+                  <p className="text-retro-orange font-pixel text-center text-sm">
+                    [IMAGE LOADING...]
+                  </p>
+                </div>
+                <h3 className="font-pixel text-retro-yellow text-center truncate">{game.title}</h3>
+                <p className="text-retro-teal font-courier text-xs text-center">{game.company}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+        
+        <div className="text-center mt-6">
+          <Link href="/games" className="retro-button inline-flex items-center">
+            <span>View All Games</span>
+            <Gamepad2 className="ml-2" size={18} />
+          </Link>
+        </div>
       </div>
     </main>
   )
