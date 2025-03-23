@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Terminal, User, Link2, Database, Gamepad2, Server, Shield } from 'lucide-react'
+import { Menu, X, Terminal, User, Link2, Database, Gamepad2, Server, Shield, Key } from 'lucide-react'
 import Image from 'next/image'
 
 export default function RetroNavbar() {
@@ -54,6 +54,13 @@ export default function RetroNavbar() {
                 </div>
               </Link>
             ))}
+            <Link 
+              href="/secret"
+              className="secret-button ml-4 opacity-30 hover:opacity-100 transition-opacity duration-300"
+              title="Secret Access"
+            >
+              <Key size={18} className="text-matrix-green" />
+            </Link>
           </div>
           
           <button 
@@ -79,6 +86,16 @@ export default function RetroNavbar() {
                 </div>
               </Link>
             ))}
+            <Link 
+              href="/secret"
+              className="block py-2 px-4 text-matrix-dim hover:text-matrix-green opacity-30 hover:opacity-100 transition-opacity duration-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <div className="flex items-center">
+                <Key size={18} />
+                <span className="ml-2 font-pixel">Secret Access</span>
+              </div>
+            </Link>
           </div>
         )}
       </div>
