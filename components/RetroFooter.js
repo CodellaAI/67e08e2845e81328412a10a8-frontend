@@ -7,8 +7,8 @@ export default function RetroFooter() {
   const currentYear = new Date().getFullYear()
   
   return (
-    <footer className="bg-retro-black border-t-4 border-retro-purple">
-      <div className="h-1 bg-gradient-to-r from-retro-teal via-retro-pink to-retro-blue"></div>
+    <footer className="bg-black border-t-4 border-retro-purple">
+      <div className="h-2 bg-gradient-to-r from-retro-teal via-retro-pink to-retro-blue"></div>
       
       <div className="retro-container py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -26,9 +26,9 @@ export default function RetroFooter() {
             <h3 className="font-pixel text-xl text-retro-green mb-4">Contact</h3>
             <div className="flex justify-center items-center space-x-2 mb-2">
               <Mail className="text-retro-teal" size={18} />
-              <span className="font-courier text-white">webmaster@geocities.com</span>
+              <span className="font-courier text-retro-pink">webmaster@geocities.com</span>
             </div>
-            <p className="font-courier text-white text-sm">
+            <p className="font-courier text-gray-400 text-sm">
               Please allow 2-3 days for a response
             </p>
             <div className="mt-4">
@@ -44,10 +44,10 @@ export default function RetroFooter() {
           
           <div className="text-center md:text-right">
             <h3 className="font-pixel text-xl text-retro-green mb-4">Site Info</h3>
-            <p className="font-courier text-white text-sm mb-2">
+            <p className="font-courier text-gray-400 text-sm mb-2">
               Last updated: December 15, 2023
             </p>
-            <p className="font-courier text-white text-sm mb-2">
+            <p className="font-courier text-gray-400 text-sm mb-2">
               Best viewed at 800x600 resolution
             </p>
             <div className="flex justify-center md:justify-end space-x-2 mt-4">
@@ -67,20 +67,36 @@ export default function RetroFooter() {
           </div>
         </div>
         
-        <div className="retro-divider"></div>
+        <div className="retro-divider my-6"></div>
         
-        <div className="text-center">
+        <div className="text-center bg-retro-darkgray p-4 border-2 border-retro-purple">
           <p className="font-pixel text-retro-pink text-sm">
             <span className="flex items-center justify-center">
               Made with <Heart className="text-retro-red mx-1" size={16} /> in {currentYear}
             </span>
           </p>
-          <p className="font-courier text-white text-xs mt-2">
+          <p className="font-courier text-retro-teal text-xs mt-2">
             This site is a nostalgic tribute to 90s web design
           </p>
-          <p className="font-courier text-retro-yellow text-xs mt-4">
-            Visitor Count: 1,337
-          </p>
+          <div className="mt-4 inline-block bg-black px-4 py-2 border retro-bevel">
+            <p className="font-courier text-retro-yellow text-xs blink">
+              Visitor Count: 1,337
+            </p>
+          </div>
+          <div className="mt-4 flex justify-center space-x-3">
+            <Image 
+              src="/images/ie_animated.gif" 
+              alt="Internet Explorer" 
+              width={88} 
+              height={31}
+            />
+            <Image 
+              src="/images/notepad.gif" 
+              alt="Made with Notepad" 
+              width={88} 
+              height={31}
+            />
+          </div>
         </div>
       </div>
     </footer>
