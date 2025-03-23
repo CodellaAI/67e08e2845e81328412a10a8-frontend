@@ -1,12 +1,29 @@
 
 import Link from 'next/link'
 import { Mail, Shield, Terminal, Server, Database } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export default function RetroFooter() {
   const currentYear = new Date().getFullYear()
+  const [isShaking, setIsShaking] = useState(false)
+  
+  useEffect(() => {
+    if (isShaking) {
+      // Reset the shaking after 2 seconds
+      const timer = setTimeout(() => {
+        setIsShaking(false)
+      }, 2000)
+      
+      return () => clearTimeout(timer)
+    }
+  }, [isShaking])
+  
+  const triggerShake = () => {
+    setIsShaking(true)
+  }
   
   return (
-    <footer className="bg-hacker-black border-t-2 border-matrix-green">
+    <footer className={`bg-hacker-black border-t-2 border-matrix-green ${isShaking ? 'shake-effect' : ''}`}>
       <div className="h-1 bg-matrix-green"></div>
       
       <div className="retro-container py-6">
@@ -75,7 +92,11 @@ export default function RetroFooter() {
             <div className="bg-hacker-terminal p-2 border border-matrix-green">
               <Database className="text-matrix-green" size={20} />
             </div>
-            <div className="bg-hacker-terminal p-2 border border-matrix-green">
+            <div 
+              className="bg-hacker-terminal p-2 border border-matrix-green cursor-pointer secret-button" 
+              onClick={triggerShake}
+              title="Secret terminal command"
+            >
               <Terminal className="text-matrix-green" size={20} />
             </div>
           </div>
