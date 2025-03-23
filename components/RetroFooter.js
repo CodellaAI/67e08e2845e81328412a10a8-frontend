@@ -17,6 +17,7 @@ export default function RetroFooter() {
             <ul className="space-y-2">
               <li><Link href="/" className="retro-link">Home</Link></li>
               <li><Link href="/about" className="retro-link">About</Link></li>
+              <li><Link href="/games" className="retro-link">Games</Link></li>
               <li><Link href="/links" className="retro-link">Links</Link></li>
               <li><Link href="/guestbook" className="retro-link">Guestbook</Link></li>
             </ul>
