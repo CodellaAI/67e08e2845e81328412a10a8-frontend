@@ -1,0 +1,69 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  cursor: url('/images/cursor.png'), auto;
+}
+
+@layer components {
+  .retro-container {
+    @apply max-w-6xl mx-auto px-4;
+  }
+  
+  .retro-title {
+    @apply font-pixel text-4xl md:text-6xl text-center text-retro-teal mb-6 animate-blink;
+  }
+  
+  .retro-subtitle {
+    @apply font-comic text-2xl md:text-3xl text-retro-pink mb-4;
+  }
+  
+  .retro-text {
+    @apply font-courier text-lg text-white leading-relaxed;
+  }
+  
+  .retro-button {
+    @apply font-pixel text-lg bg-retro-darkgray text-retro-green border-4 border-retro-green 
+    px-6 py-2 shadow-[5px_5px_0px_0px_rgba(0,255,0,0.5)] hover:shadow-[2px_2px_0px_0px_rgba(0,255,0,0.5)]
+    hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200;
+  }
+  
+  .retro-link {
+    @apply font-pixel text-retro-teal underline hover:text-retro-pink hover:no-underline;
+  }
+  
+  .retro-card {
+    @apply bg-retro-darkgray border-4 border-retro-purple p-6 shadow-[8px_8px_0px_0px_rgba(153,0,255,0.5)];
+  }
+  
+  .retro-divider {
+    @apply h-[6px] bg-gradient-to-r from-retro-blue via-retro-pink to-retro-teal my-8;
+  }
+  
+  .retro-bevel {
+    @apply border-t-4 border-l-4 border-gray-500 border-r-4 border-b-4 border-r-gray-800 border-b-gray-800;
+  }
+  
+  .retro-nav-item {
+    @apply font-pixel text-lg text-retro-yellow hover:text-retro-orange px-4 py-2 
+    border-b-2 border-transparent hover:border-retro-orange transition-colors;
+  }
+  
+  .retro-nav-item-active {
+    @apply font-pixel text-lg text-retro-orange border-b-2 border-retro-orange px-4 py-2;
+  }
+  
+  .marquee-container {
+    @apply overflow-hidden whitespace-nowrap bg-retro-darkgray border-y-2 border-retro-green py-2;
+  }
+  
+  .marquee-text {
+    @apply font-pixel text-xl text-retro-green animate-marquee;
+  }
+  
+  .under-construction {
+    @apply flex items-center justify-center space-x-2 bg-yellow-300 text-black font-bold p-2 text-center;
+  }
+}
