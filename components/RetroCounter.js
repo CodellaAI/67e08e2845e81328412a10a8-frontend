@@ -1,4 +1,6 @@
 
+'use client';
+
 export default function RetroCounter({ count }) {
   // Convert count to string and pad with zeros if needed
   const countStr = count.toString().padStart(6, '0');
