@@ -1,4 +1,5 @@
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -111,6 +112,67 @@
   .scanner::after {
     @apply content-[''] absolute top-0 left-0 right-0 h-[5px] bg-matrix-green bg-opacity-30 shadow-[0_0_10px_5px_rgba(0,255,0,0.5)] animate-scan;
   }
+  
+  /* New animation classes */
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,255,0,0.7)] hover:transform hover:scale-[1.02] hover:border-matrix-cyan;
+  }
+  
+  .hover-glitch {
+    @apply relative overflow-hidden;
+  }
+  
+  .hover-glitch:hover {
+    @apply animate-glitch-text;
+  }
+  
+  .button-hover-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .button-hover-effect::after {
+    @apply content-[''] absolute inset-0 bg-matrix-green opacity-0 transition-opacity duration-300;
+  }
+  
+  .button-hover-effect:hover::after {
+    @apply opacity-10;
+  }
+  
+  .button-hover-effect:active {
+    @apply transform scale-95;
+  }
+  
+  .card-hover-effect {
+    @apply transition-all duration-300 hover:transform hover:scale-[1.05] hover:shadow-[0_0_20px_rgba(0,255,0,0.5)];
+  }
+  
+  .icon-pulse {
+    @apply animate-pulse;
+  }
+  
+  .icon-float {
+    @apply animate-float;
+  }
+  
+  .rotate-animation {
+    @apply animate-spin-slow;
+  }
+  
+  .glitch-effect {
+    @apply animate-glitch-text;
+  }
+  
+  .hover-scan {
+    @apply relative overflow-hidden;
+  }
+  
+  .hover-scan:hover::after {
+    @apply content-[''] absolute top-0 left-0 right-0 h-[2px] bg-matrix-green opacity-70 shadow-[0_0_10px_rgba(0,255,0,0.7)] animate-scan;
+  }
+  
+  .input-focus-effect:focus {
+    @apply animate-border-pulse;
+  }
 }
 
 @keyframes scan {
@@ -137,3 +199,32 @@
   0% { top: -10%; }
   100% { top: 100%; }
 }
+
+@keyframes glitch-text {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes border-pulse {
+  0%, 100% { border-color: rgba(0, 255, 0, 0.7); }
+  50% { border-color: rgba(0, 255, 0, 0.3); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+

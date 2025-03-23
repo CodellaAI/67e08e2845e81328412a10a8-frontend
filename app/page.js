@@ -1,8 +1,12 @@
 
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { Terminal, Shield, Code, Wifi, Zap, Gamepad2, Lock, Server, Database } from 'lucide-react'
 import RetroCounter from '../components/RetroCounter'
+import MatrixRain from '../components/MatrixRain'
+import { useEffect, useState } from 'react'
+import TypingEffect from '../components/TypingEffect'
 
 export default function Home() {
   // Sample games data for the homepage
@@ -36,7 +40,7 @@ export default function Home() {
   return (
     <main className="retro-container py-8">
       <div className="text-center mb-12">
-        <div className="terminal-window mb-6">
+        <div className="terminal-window mb-6 relative overflow-hidden">
           <div className="terminal-header">
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-matrix-red"></div>
@@ -46,13 +50,21 @@ export default function Home() {
             <div className="terminal-title">main.terminal</div>
             <div></div>
           </div>
-          <div className="p-2">
-            <p className="code-text">$ <span className="animate-blink">_</span></p>
-            <p className="code-text">$ initiating_sequence</p>
-            <p className="code-text">$ accessing_mainframe...</p>
-            <p className="code-text">$ connection_established</p>
-            <p className="code-text">$ <span className="text-matrix-green font-bold">ACCESS GRANTED</span></p>
-            <h1 className="retro-title mt-4" data-text="WELCOME TO THE MATRIX">WELCOME TO THE MATRIX</h1>
+          <div className="p-2 relative z-10">
+            <TypingEffect 
+              texts={[
+                "$ initiating_sequence",
+                "$ accessing_mainframe...",
+                "$ connection_established",
+                "$ ACCESS GRANTED"
+              ]}
+              speed={80}
+              className="code-text"
+            />
+            <h1 className="retro-title mt-4 glitch-effect" data-text="WELCOME TO THE MATRIX">WELCOME TO THE MATRIX</h1>
+          </div>
+          <div className="absolute inset-0 opacity-20 pointer-events-none">
+            <MatrixRain />
           </div>
         </div>
         
@@ -64,28 +76,28 @@ export default function Home() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div className="retro-card">
+        <div className="retro-card hover-glow">
           <h2 className="retro-subtitle">System Features</h2>
           <ul className="space-y-3 text-matrix-green font-terminal">
             <li className="flex items-start">
-              <Shield className="text-matrix-green mr-2 flex-shrink-0" size={20} />
+              <Shield className="text-matrix-green mr-2 flex-shrink-0 icon-pulse" size={20} />
               <span>Advanced Encryption</span>
             </li>
             <li className="flex items-start">
-              <Wifi className="text-matrix-green mr-2 flex-shrink-0" size={20} />
+              <Wifi className="text-matrix-green mr-2 flex-shrink-0 icon-pulse" size={20} />
               <span>Secure Network Access</span>
             </li>
             <li className="flex items-start">
-              <Code className="text-matrix-green mr-2 flex-shrink-0" size={20} />
+              <Code className="text-matrix-green mr-2 flex-shrink-0 icon-pulse" size={20} />
               <span>Backdoor Scripts</span>
             </li>
           </ul>
-          <button className="retro-button mt-4 w-full">
+          <button className="retro-button mt-4 w-full button-hover-effect">
             $ Execute
           </button>
         </div>
         
-        <div className="retro-card">
+        <div className="retro-card hover-glow">
           <h2 className="retro-subtitle">System Logs</h2>
           <div className="space-y-3 text-matrix-green font-terminal">
             <p>12/15/2023: Firewall updated</p>
@@ -99,13 +111,13 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="retro-card">
+        <div className="retro-card hover-glow">
           <h2 className="retro-subtitle">Network Nodes</h2>
           <ul className="space-y-3">
-            <li><a href="#" className="retro-link">192.168.1.1</a></li>
-            <li><a href="#" className="retro-link">darkweb.onion</a></li>
-            <li><a href="#" className="retro-link">secure.terminal</a></li>
-            <li><a href="#" className="retro-link">irc.hacker.net</a></li>
+            <li><a href="#" className="retro-link hover-glitch">192.168.1.1</a></li>
+            <li><a href="#" className="retro-link hover-glitch">darkweb.onion</a></li>
+            <li><a href="#" className="retro-link hover-glitch">secure.terminal</a></li>
+            <li><a href="#" className="retro-link hover-glitch">irc.hacker.net</a></li>
           </ul>
           <div className="mt-4 flex justify-center">
             <div className="px-4 py-2 bg-hacker-black border border-matrix-green">
@@ -118,7 +130,7 @@ export default function Home() {
       <div className="retro-divider"></div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div className="retro-card">
+        <div className="retro-card hover-glow">
           <h2 className="retro-subtitle">Terminal Info</h2>
           <p className="retro-text mb-4">
             This terminal provides access to the underground network of digital systems. 
@@ -129,7 +141,7 @@ export default function Home() {
           </p>
         </div>
         
-        <div className="retro-card">
+        <div className="retro-card hover-glow">
           <h2 className="retro-subtitle">Access Counter</h2>
           <div className="flex justify-center my-4">
             <RetroCounter count={1337} />
@@ -145,10 +157,10 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="under-construction mb-12">
-        <Terminal className="text-matrix-green" size={24} />
+      <div className="under-construction mb-12 hover-scan">
+        <Terminal className="text-matrix-green rotate-animation" size={24} />
         <span>SYSTEM UPGRADE IN PROGRESS - STANDBY FOR UPDATES</span>
-        <Terminal className="text-matrix-green" size={24} />
+        <Terminal className="text-matrix-green rotate-animation" size={24} />
       </div>
       
       <div className="terminal-window mb-12">
@@ -160,25 +172,25 @@ export default function Home() {
             <label className="block font-terminal text-matrix-green mb-2">Username:</label>
             <input 
               type="text" 
-              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan"
+              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan input-focus-effect"
             />
           </div>
           <div>
             <label className="block font-terminal text-matrix-green mb-2">Encryption Key:</label>
             <input 
               type="password" 
-              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan"
+              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan input-focus-effect"
             />
           </div>
           <div>
             <label className="block font-terminal text-matrix-green mb-2">Message:</label>
             <textarea 
               rows="4" 
-              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan"
+              className="w-full bg-hacker-black text-matrix-green border-2 border-matrix-green p-2 font-terminal focus:outline-none focus:ring-2 focus:ring-matrix-cyan input-focus-effect"
             ></textarea>
           </div>
           <div className="flex justify-center">
-            <button type="submit" className="retro-button">
+            <button type="submit" className="retro-button button-hover-effect">
               $ Transmit
             </button>
           </div>
@@ -189,9 +201,9 @@ export default function Home() {
       <div className="mb-12">
         <div className="text-center mb-6">
           <h2 className="retro-subtitle flex items-center justify-center">
-            <Gamepad2 className="text-matrix-green mr-2" size={24} />
+            <Gamepad2 className="text-matrix-green mr-2 icon-float" size={24} />
             Cyberpunk Games Database
-            <Gamepad2 className="text-matrix-green ml-2" size={24} />
+            <Gamepad2 className="text-matrix-green ml-2 icon-float" size={24} />
           </h2>
           <p className="font-terminal text-matrix-dim mb-4">Access these classic hacker-themed games from our secure server</p>
         </div>
@@ -199,7 +211,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {featuredGames.map((game) => (
             <Link href={`/games/${game.id}`} key={game.id}>
-              <div className="bg-hacker-terminal border-2 border-matrix-green hover:border-matrix-cyan p-3 cursor-pointer transition-colors">
+              <div className="bg-hacker-terminal border-2 border-matrix-green hover:border-matrix-cyan p-3 cursor-pointer transition-colors card-hover-effect">
                 <div className="bg-hacker-black border border-matrix-dim h-32 flex items-center justify-center mb-2">
                   <p className="text-matrix-green font-terminal text-center text-sm">
                     [LOADING DATA...]
@@ -213,14 +225,14 @@ export default function Home() {
         </div>
         
         <div className="text-center mt-6">
-          <Link href="/games" className="retro-button inline-flex items-center">
+          <Link href="/games" className="retro-button inline-flex items-center button-hover-effect">
             <span>$ Access Database</span>
-            <Database className="ml-2" size={18} />
+            <Database className="ml-2 icon-pulse" size={18} />
           </Link>
         </div>
       </div>
       
-      <div className="terminal-window mb-12">
+      <div className="terminal-window mb-12 hover-scan">
         <div className="terminal-header">
           <div className="terminal-title">status.log</div>
         </div>
@@ -236,3 +248,4 @@ export default function Home() {
     </main>
   )
 }
+
