@@ -1,4 +1,6 @@
 
+"use client"
+
 import Link from 'next/link'
 import { Mail, Shield, Terminal, Server, Database, Key } from 'lucide-react'
 import { useState, useEffect } from 'react'
