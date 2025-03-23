@@ -1,17 +1,19 @@
 
 import Link from 'next/link'
-import { Mail, Shield, Terminal, Server, Database } from 'lucide-react'
+import { Mail, Shield, Terminal, Server, Database, Key } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function RetroFooter() {
   const currentYear = new Date().getFullYear()
   const [isShaking, setIsShaking] = useState(false)
+  const [secretVisible, setSecretVisible] = useState(false)
   
   useEffect(() => {
     if (isShaking) {
       // Reset the shaking after 2 seconds
       const timer = setTimeout(() => {
         setIsShaking(false)
+        setSecretVisible(true)
       }, 2000)
       
       return () => clearTimeout(timer)
@@ -100,6 +102,18 @@ export default function RetroFooter() {
               <Terminal className="text-matrix-green" size={20} />
             </div>
           </div>
+          
+          {secretVisible && (
+            <div className="mt-4 p-3 border-2 border-matrix-cyan bg-hacker-black animate-pulse">
+              <h4 className="font-pixel text-matrix-cyan mb-2 glitch-effect" data-text="SECRET ACCESS GRANTED">SECRET ACCESS GRANTED</h4>
+              <div className="flex items-center justify-center">
+                <Key className="text-matrix-cyan mr-2" size={18} />
+                <Link href="/secret" className="font-terminal text-matrix-green hover:text-matrix-cyan">
+                  $ access_hidden_terminal
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </footer>
