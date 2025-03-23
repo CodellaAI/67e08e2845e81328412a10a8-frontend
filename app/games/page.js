@@ -1,5 +1,6 @@
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function GamesPage() {
   const games = [
@@ -107,36 +108,37 @@ export default function GamesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {games.map((game) => (
-          <div 
-            key={game.id} 
-            className="bg-retro-darkgray border-2 border-retro-purple hover:border-retro-teal transition-colors p-4"
-          >
-            <div className="flex flex-col sm:flex-row">
-              <div className="sm:w-1/3 mb-4 sm:mb-0 relative h-40">
-                <div className="absolute inset-0 bg-retro-black flex items-center justify-center border-2 border-retro-blue">
-                  <p className="text-retro-orange font-pixel text-center">
-                    [IMAGE LOADING...]
-                  </p>
+          <Link href={`/games/${game.id}`} key={game.id}>
+            <div 
+              className="bg-retro-darkgray border-2 border-retro-purple hover:border-retro-teal transition-colors p-4 cursor-pointer"
+            >
+              <div className="flex flex-col sm:flex-row">
+                <div className="sm:w-1/3 mb-4 sm:mb-0 relative h-40">
+                  <div className="absolute inset-0 bg-retro-black flex items-center justify-center border-2 border-retro-blue">
+                    <p className="text-retro-orange font-pixel text-center">
+                      [IMAGE LOADING...]
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="sm:w-2/3 sm:pl-4">
-                <h2 className="text-retro-orange font-pixel text-xl mb-2">
-                  {game.title}
-                </h2>
-                <p className="text-retro-yellow font-comic mb-2">
-                  {game.description}
-                </p>
-                <p className="text-retro-teal font-pixel text-sm">
-                  Developer: {game.company}
-                </p>
-                <div className="mt-2">
-                  <button className="bg-retro-purple hover:bg-retro-blue text-retro-yellow font-pixel py-1 px-3 text-sm">
-                    DOWNLOAD NOW!
-                  </button>
+                <div className="sm:w-2/3 sm:pl-4">
+                  <h2 className="text-retro-orange font-pixel text-xl mb-2">
+                    {game.title}
+                  </h2>
+                  <p className="text-retro-yellow font-comic mb-2">
+                    {game.description}
+                  </p>
+                  <p className="text-retro-teal font-pixel text-sm">
+                    Developer: {game.company}
+                  </p>
+                  <div className="mt-2">
+                    <span className="bg-retro-purple hover:bg-retro-blue text-retro-yellow font-pixel py-1 px-3 text-sm inline-block">
+                      VIEW GAME DETAILS
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
