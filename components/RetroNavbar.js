@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Home, User, Link2, BookOpen } from 'lucide-react'
+import { Menu, X, Home, User, Link2, BookOpen, Gamepad2 } from 'lucide-react'
 import Image from 'next/image'
 
 export default function RetroNavbar() {
@@ -16,6 +16,7 @@ export default function RetroNavbar() {
     { name: 'About', path: '/about', icon: <User size={18} /> },
     { name: 'Links', path: '/links', icon: <Link2 size={18} /> },
     { name: 'Guestbook', path: '/guestbook', icon: <BookOpen size={18} /> },
+    { name: 'Games', path: '/games', icon: <Gamepad2 size={18} /> },
   ]
   
   const toggleMenu = () => {
