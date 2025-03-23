@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Home, User, Link2, BookOpen, Gamepad2 } from 'lucide-react'
+import { Menu, X, Terminal, User, Link2, Database, Gamepad2, Server, Shield } from 'lucide-react'
 import Image from 'next/image'
 
 export default function RetroNavbar() {
@@ -12,11 +12,11 @@ export default function RetroNavbar() {
   const pathname = usePathname()
   
   const navItems = [
-    { name: 'Home', path: '/', icon: <Home size={18} /> },
-    { name: 'About', path: '/about', icon: <User size={18} /> },
-    { name: 'Links', path: '/links', icon: <Link2 size={18} /> },
-    { name: 'Guestbook', path: '/guestbook', icon: <BookOpen size={18} /> },
-    { name: 'Games', path: '/games', icon: <Gamepad2 size={18} /> },
+    { name: 'Terminal', path: '/', icon: <Terminal size={18} /> },
+    { name: 'Identity', path: '/about', icon: <User size={18} /> },
+    { name: 'Network', path: '/links', icon: <Link2 size={18} /> },
+    { name: 'Logs', path: '/guestbook', icon: <Database size={18} /> },
+    { name: 'Exploits', path: '/games', icon: <Gamepad2 size={18} /> },
   ]
   
   const toggleMenu = () => {
@@ -24,23 +24,19 @@ export default function RetroNavbar() {
   }
   
   return (
-    <header className="bg-retro-black border-b-4 border-retro-purple">
+    <header className="bg-hacker-black border-b-2 border-matrix-green">
       <div className="retro-container py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Image 
-              src="/images/logo.gif" 
-              alt="Retro Time Machine" 
-              width={60} 
-              height={60}
-              className="mr-4"
-            />
+            <div className="mr-4 bg-hacker-terminal p-2 border border-matrix-green">
+              <Shield className="text-matrix-green" size={32} />
+            </div>
             <div>
-              <h1 className="font-pixel text-2xl md:text-3xl text-retro-teal">
-                Retro Time Machine
+              <h1 className="font-pixel text-2xl md:text-3xl text-matrix-green">
+                HACKER_TERMINAL
               </h1>
-              <p className="font-comic text-sm text-retro-pink">
-                A journey back to the 90s web
+              <p className="font-terminal text-sm text-matrix-dim">
+                v1.3.3.7_secure_shell
               </p>
             </div>
           </div>
@@ -61,7 +57,7 @@ export default function RetroNavbar() {
           </div>
           
           <button 
-            className="md:hidden text-retro-teal hover:text-retro-pink"
+            className="md:hidden text-matrix-green hover:text-matrix-cyan"
             onClick={toggleMenu}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -69,12 +65,12 @@ export default function RetroNavbar() {
         </div>
         
         {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-retro-darkgray border-2 border-retro-purple p-2">
+          <div className="md:hidden mt-4 bg-hacker-terminal border-2 border-matrix-green p-2">
             {navItems.map((item) => (
               <Link 
                 key={item.path} 
                 href={item.path}
-                className={`block py-2 px-4 ${pathname === item.path ? "text-retro-orange" : "text-retro-yellow hover:text-retro-orange"}`}
+                className={`block py-2 px-4 ${pathname === item.path ? "text-matrix-green" : "text-matrix-dim hover:text-matrix-green"}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <div className="flex items-center">
@@ -87,7 +83,7 @@ export default function RetroNavbar() {
         )}
       </div>
       
-      <div className="h-1 bg-gradient-to-r from-retro-blue via-retro-pink to-retro-teal"></div>
+      <div className="h-1 bg-matrix-green"></div>
     </header>
   )
 }

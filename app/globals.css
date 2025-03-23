@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-  cursor: url('/images/cursor.png'), auto;
+  cursor: url('/images/cursor-hacker.png'), auto;
 }
 
 @layer components {
@@ -13,57 +13,127 @@
   }
   
   .retro-title {
-    @apply font-pixel text-4xl md:text-6xl text-center text-retro-teal mb-6 animate-blink;
+    @apply font-pixel text-4xl md:text-6xl text-center text-matrix-green mb-6 animate-blink;
   }
   
   .retro-subtitle {
-    @apply font-comic text-2xl md:text-3xl text-retro-pink mb-4;
+    @apply font-pixel text-2xl md:text-3xl text-matrix-cyan mb-4;
   }
   
   .retro-text {
-    @apply font-courier text-lg text-white leading-relaxed;
+    @apply font-terminal text-lg text-matrix-green leading-relaxed;
   }
   
   .retro-button {
-    @apply font-pixel text-lg bg-retro-darkgray text-retro-green border-4 border-retro-green 
-    px-6 py-2 shadow-[5px_5px_0px_0px_rgba(0,255,0,0.5)] hover:shadow-[2px_2px_0px_0px_rgba(0,255,0,0.5)]
-    hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200;
+    @apply font-pixel text-lg bg-hacker-dark text-matrix-green border-2 border-matrix-green 
+    px-6 py-2 shadow-[0px_0px_10px_0px_rgba(0,255,0,0.5)] hover:shadow-[0px_0px_15px_0px_rgba(0,255,0,0.7)]
+    hover:bg-hacker-terminal transition-all duration-200;
   }
   
   .retro-link {
-    @apply font-pixel text-retro-teal underline hover:text-retro-pink hover:no-underline;
+    @apply font-pixel text-matrix-cyan underline hover:text-matrix-green hover:no-underline;
   }
   
   .retro-card {
-    @apply bg-retro-darkgray border-4 border-retro-purple p-6 shadow-[8px_8px_0px_0px_rgba(153,0,255,0.5)];
+    @apply bg-hacker-terminal border-2 border-matrix-green p-6 shadow-[0px_0px_10px_rgba(0,255,0,0.3)];
   }
   
   .retro-divider {
-    @apply h-[6px] bg-gradient-to-r from-retro-blue via-retro-pink to-retro-teal my-8;
+    @apply h-[2px] bg-matrix-green my-8;
   }
   
   .retro-bevel {
-    @apply border-t-4 border-l-4 border-gray-500 border-r-4 border-b-4 border-r-gray-800 border-b-gray-800;
+    @apply border-t-2 border-l-2 border-matrix-dim border-r-2 border-b-2 border-r-matrix-dark border-b-matrix-dark;
   }
   
   .retro-nav-item {
-    @apply font-pixel text-lg text-retro-yellow hover:text-retro-orange px-4 py-2 
-    border-b-2 border-transparent hover:border-retro-orange transition-colors;
+    @apply font-pixel text-lg text-matrix-dim hover:text-matrix-green px-4 py-2 
+    border-b-2 border-transparent hover:border-matrix-green transition-colors;
   }
   
   .retro-nav-item-active {
-    @apply font-pixel text-lg text-retro-orange border-b-2 border-retro-orange px-4 py-2;
+    @apply font-pixel text-lg text-matrix-green border-b-2 border-matrix-green px-4 py-2;
   }
   
   .marquee-container {
-    @apply overflow-hidden whitespace-nowrap bg-retro-darkgray border-y-2 border-retro-green py-2;
+    @apply overflow-hidden whitespace-nowrap bg-hacker-dark border-y-2 border-matrix-green py-2;
   }
   
   .marquee-text {
-    @apply font-pixel text-xl text-retro-green animate-marquee;
+    @apply font-terminal text-xl text-matrix-green animate-marquee;
   }
   
   .under-construction {
-    @apply flex items-center justify-center space-x-2 bg-yellow-300 text-black font-bold p-2 text-center;
+    @apply flex items-center justify-center space-x-2 bg-hacker-terminal text-matrix-green font-bold p-2 text-center border-2 border-matrix-green;
   }
+  
+  .matrix-bg {
+    @apply bg-hacker-dark relative overflow-hidden;
+  }
+  
+  .code-text {
+    @apply font-terminal text-matrix-green;
+  }
+  
+  .terminal-window {
+    @apply bg-hacker-terminal border-2 border-matrix-green p-4 font-terminal text-matrix-green;
+  }
+  
+  .terminal-header {
+    @apply flex items-center justify-between mb-2 pb-2 border-b border-matrix-dim;
+  }
+  
+  .terminal-title {
+    @apply font-pixel text-matrix-green;
+  }
+  
+  .glitch-text {
+    @apply relative inline-block;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    @apply content-[attr(data-text)] absolute left-0 top-0 w-full h-full;
+  }
+  
+  .glitch-text::before {
+    @apply text-matrix-green left-[2px] text-opacity-70 animate-glitch-1;
+  }
+  
+  .glitch-text::after {
+    @apply text-matrix-cyan left-[-2px] text-opacity-70 animate-glitch-2;
+  }
+  
+  .scanner {
+    @apply relative overflow-hidden;
+  }
+  
+  .scanner::after {
+    @apply content-[''] absolute top-0 left-0 right-0 h-[5px] bg-matrix-green bg-opacity-30 shadow-[0_0_10px_5px_rgba(0,255,0,0.5)] animate-scan;
+  }
+}
+
+@keyframes scan {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(50% 0 50% 0); }
+  20% { clip-path: inset(20% 0 80% 0); }
+  40% { clip-path: inset(80% 0 20% 0); }
+  60% { clip-path: inset(10% 0 90% 0); }
+  80% { clip-path: inset(90% 0 10% 0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(50% 0 50% 0); }
+  25% { clip-path: inset(30% 0 70% 0); }
+  50% { clip-path: inset(70% 0 30% 0); }
+  75% { clip-path: inset(10% 0 90% 0); }
+}
+
+@keyframes matrix-rain {
+  0% { top: -10%; }
+  100% { top: 100%; }
 }

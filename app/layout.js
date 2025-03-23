@@ -3,8 +3,8 @@ import './globals.css'
 import RetroLayout from '../components/RetroLayout'
 
 export const metadata = {
-  title: 'Retro Time Machine',
-  description: 'A nostalgic journey back to 90s web design',
+  title: 'Hacker Terminal',
+  description: 'A nostalgic journey to 90s hacker aesthetics',
 }
 
 export default function RootLayout({ children }) {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <head>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-retro-black min-h-screen">
+      <body className="bg-hacker-black min-h-screen">
         <RetroLayout>{children}</RetroLayout>
       </body>
     </html>
